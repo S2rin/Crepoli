@@ -19,7 +19,7 @@ Tags: Node.js, OAuth2.0
 
 ## Service Flow
 
-![Service Flow](https://github.com/S2rin/S2rin.github.io/blob/master/images/사용자 시나리오.png?raw=true "사용자 시나리오")
+![Service Flow](https://github.com/S2rin/S2rin.github.io/blob/master/images/사용자%20시나리오.png?raw=true "사용자 시나리오")
 
 ## UI Storyboard
 
