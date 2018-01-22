@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CrePoli - Upload</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/collabo_upload.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <%- include partials/nav.ejs %>
+
+    <!-- Collabo Upload -->
+    <section id="collabo">
+      <div class="container">
+        <br>
+
+        <!-- Content -->
+        <div class="row">
+            <div class="col-sm-12">
+                 <div class="panel panel-default">
+                  <div class="panel-body">
+                    <form class="box" action="/gallery/upload" method='post' enctype="multipart/form-data">
+                      <h3>작품 등록</h3>
+                      <br>
+                       <label for="InputFile">파일 업로드</label>
+                       <input name="uploadFile" type="file" accept="image/png, image/jpeg, image/gif">
+
+                       <label for="pieceName">작품명</label>
+                       <input type="text" name="pieceName" maxlength="30" placeholder="작품명을 입력하세요(30자 내)">
+
+                       <label for="pieceContent">작품 설명</label>
+                       <textarea type="text" name="pieceContent" rows=15 placeholder="작품 설명을 입력하세요(500자 내)"></textarea>
+
+                       <button type="button" class="btn btn-primary pull-right">등록하기</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include partials/footer.ejs %>
+
+    <%- include partials/basejs.ejs %>
+    <script>
+      $(".btn").click(function () {
+        console.log('check start!');
+
+        var uploadFile = $("input[name='uploadFile']").get(0).files.length;
+        var pieceName = $("input[name='pieceName']").val();
+        var pieceContent = $("textarea[name='pieceContent']").val();
+
+        /* 에러 분기처리 */
+        if(uploadFile == 0){
+            swal('Fail', '파일을 업로드해주세요!', 'error')
+            return false;
+        }else if(!pieceName){
+            swal('Fail', '작품명을 작성해주세요', 'error')
+            return false;
+        }else if(!pieceContent){
+            swal('Fail', '작품 설명을 작성해주세요', 'error')
+            return false;
+        }else{
+            $(this).closest("form").submit();
+            return ture;
+        }
+      });
+
+    </script>
+
+  </body>
+
+</html>

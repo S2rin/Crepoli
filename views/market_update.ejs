@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CrePoli - Upload</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/collabo_upload.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <%- include partials/nav.ejs %>
+
+    <!-- Collabo Upload -->
+    <section id="collabo">
+      <div class="container">
+        <br>
+
+        <% var item = rows[0];%>
+
+        <!-- Content -->
+        <div class="row">
+            <div class="col-sm-12">
+                 <div class="panel panel-default">
+                  <div class="panel-body">
+                    <form class="box" action="/mypage/goods/update/<%=item.goods_code%>" method='post' enctype="multipart/form-data">
+                      <h3>상품 수정</h3>
+                      <br>
+                       <label for="InputFile">파일 업로드</label>
+                       <input name="uploadFile" type="file" accept="image/png, image/jpeg, image/gif">
+
+                       <label for="goodsName">상품명</label>
+                       <input type="text" name="goodsName" maxlength="30" placeholder="상품명을 입력하세요(30자 내)" value="<%=item.goods_name%>">
+
+                       <label for="goodsPrice">상품 가격</label>
+                       <input type="text" name="goodsPrice" maxlength="30" placeholder="상품 가격을 입력하세요" value="<%=item.goods_cost%>">
+
+                       <label for="goodsMinorder">목표 신청 수</label>
+                       <input type="number" name = "goodsMinorder" placeholder="숫자만 입력해주세요" style="width: 98%; border: 1px solid gray;" value="<%=item.goods_minorder%>">
+
+                       <label for="goodsContent">상품 설명</label>
+                       <textarea type="text" name="goodsContent" rows=15 placeholder="상품 설명을 입력하세요(500자 내)"><%=item.goods_content%></textarea>
+
+                       <button type="submit" class="btn btn-primary pull-right">등록하기</button>
+
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include partials/footer.ejs %>
+
+    <%- include partials/basejs.ejs %>
+    <script>
+      $(".btn").click(function () {
+        console.log('check start!');
+
+        var uploadFile = $("input[name='uploadFile']").get(0).files.length;
+        var goodsName = $("input[name='goodsName']").val();
+        var goodsPrice = $("input[name='goodsPrice']").val();
+        var goodsMinorder = $("input[name='goodsMinorder']").val();
+        var goodsContent = $("textarea[name='goodsContent']").val();
+
+        /* 에러 분기처리 */
+        if(uploadFile == 0){
+            swal('Fail', '파일을 업로드해주세요!', 'error')
+            return false;
+        }else if(!goodsName){
+            swal('Fail', ' 상품명을 작성해주세요', 'error')
+            return false;
+        }else if (!goodsPrice) {
+            swal('Fail', ' 상품 가격 작성해주세요', 'error')
+            return false;
+        }else if (!goodsMinorder) {
+            swal('Fail', ' 목표 신청 수를 작성해주세요', 'error')
+            return false;
+        }else if(!goodsContent){
+            swal('Fail', '상품 설명을 작성해주세요', 'error')
+            return false;
+        }else{
+            $(this).closest("form").submit();
+            return ture;
+        }
+      });
+
+    </script>
+
+  </body>
+
+</html>

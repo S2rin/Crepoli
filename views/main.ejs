@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/agency.css" rel="stylesheet">
+
+  </head>
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <%- include partials/nav.ejs %>
+
+    <!-- Header -->
+    <%- include partials/header.ejs %>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Gallery</h2>
+            <h3 class="section-subheading text-muted">최근 게시된 작품들을 살펴볼 수 있습니다.</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <%
+            for(var i=0; i<row1.length;i++){
+              var item = row1[i];
+          %>
+          <div class="col-lg-3 col-md-6 col-sm-12 portfolio-item">
+            <a class="portfolio-link" href="/gallery/pieces/<%=item.piece_code%>">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/upload/<%=item.piece_image%>" alt="" style="height: 300px;">
+            </a>
+            <div class="portfolio-caption">
+              <h4><%=item.piece_name%></h4>
+              <p class="text-muted"><%=item.member_nick%></p>
+            </div>
+        </div>
+        <% } %>
+        <div class="col-lg-12 text-center">
+            <a href="http://localhost:3000/gallery" class="btn btn-primary btn-xl">더보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="bg-light" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Market</h2>
+            <h3 class="section-subheading text-muted">작품 및 작품과 연관된 상품을 볼 수 있습니다.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <%
+            for(var i=0; i<row2.length;i++){
+              var item = row2[i];
+          %>
+          <div class="col-lg-3 col-md-6 col-sm-12 portfolio-item">
+            <a class="portfolio-link" href="/market/goods/<%=item.goods_code%>">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/upload/<%=item.goods_image%>" alt="" style="height: 300px;">
+            </a>
+            <div class="portfolio-caption">
+              <h4><%=item.goods_name%></h4>
+              <p class="text-muted"><%=item.goods_cost%></p>
+            </div>
+        </div>
+        <% } %>
+        </div><!--.row-->
+        <div class="col-lg-12 text-center">
+            <a href="http://localhost:3000/market" class="btn btn-primary btn-xl">더보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collaboration -->
+    <section id="collaboration">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">collabo</h2>
+            <h3 class="section-subheading text-muted">같이 작업하고 싶은 사람을 구할 수 있습니다.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <%
+            for(var i=0; i<row3.length;i++){
+              var item = row3[i];
+
+              var year = item.collabo_deadline.getFullYear();
+              var month = item.collabo_deadline.getMonth()+1;
+              var date = item.collabo_deadline.getDate();
+          %>
+          <div class="col-md-6 col-sm-6 portfolio-item">
+            <a class="portfolio-link" href="/collabo/detail/<%=item.collabo_code%>">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/img/collabo/<%=item.collabo_image%>" style="height: 400px;">
+            </a>
+            <div class="portfolio-caption">
+              <h4><%=item.collabo_name%></h4>
+              <p class="text-muted"><%=year +'.' +month +'.' +date%> &nbsp; 까지</p>
+            </div>
+          </div>
+          <% } %>
+        </div><!--.row-->
+        <div class="col-lg-12 text-center">
+            <a href="http://localhost:3000/collabo" class="btn btn-primary btn-xl">더보기</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- footer-->
+    <%- include partials/footer.ejs %>
+
+    <!-- base JavaScript -->
+    <%- include partials/basejs.ejs %>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.js"></script>
+
+  </body>
+</html>

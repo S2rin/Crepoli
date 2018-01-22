@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CrePoli - Market</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/market_detail.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <%- include partials/nav.ejs %>
+
+    <!-- market_detail -->
+    <section id="market">
+      <div class="container">
+        <br>
+
+        <%
+          var item = rows[0];
+          var year = item.goods_date.getFullYear();
+          var month = item.goods_date.getMonth()+1;
+          var date = item.goods_date.getDate();
+        %>
+
+        <!-- Header Description-->
+        <div class="row">
+            <div class="col-sm-12">
+              <p class="img-title"><%= item.goods_name %></p>
+              <p class="img-desc"><%=year +'.' +month +'.' +date%> &nbsp;|&nbsp; <%= item.member_nick %></p>
+            </div>
+        </div>
+
+        <!-- Image -->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img class="img-detail" src="/upload/<%= item.goods_image%>" alt="">
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Footer Description-->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="desc"><%=item.goods_content%></p>
+            </div>
+        </div>
+
+        <!-- Sales -->
+        <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-flag" aria-hidden="true" style="color: #FFF;"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">목표 신청 수</span>
+              <span class="info-box-number"><%=item.goods_minorder%></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-star" aria-hidden="true" style="color: #FFF;"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">현재 신청 수</span>
+              <span id="goods_order" class="info-box-number"><%= item.goods_order%></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+      </div><!-- /.row -->
+
+      <br>
+      <br>
+
+      <!-- Update / Delete -->
+      <div class="row">
+        <div class="col-sm-12">
+          <a href="/mypage/goods/delete/<%=item.goods_code%>" id="delete" class="btn btn-primary pull-right">삭제하기</a>
+          <a href="/mypage/goods/update/<%=item.goods_code%>" id="update" class="btn btn-primary pull-right">수정하기</a>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include partials/footer.ejs %>
+
+    <!-- Bootstrap core JavaScript -->
+    <%- include partials/basejs.ejs %>
+
+    <script src="/js/mymarket.js"></script>
+
+  </body>
+
+</html>

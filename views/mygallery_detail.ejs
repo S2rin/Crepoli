@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CrePoli - Gallery</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/gallery_detail.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <%- include partials/nav.ejs %>
+
+    <!-- Gallery_detail -->
+    <section id="gallery">
+      <div class="container">
+        <br>
+
+        <%
+          var item = rows[0];
+          var year = item. piece_date.getFullYear();
+          var month = item.piece_date.getMonth()+1;
+          var date = item.piece_date.getDate();%>
+        <!-- Header Description-->
+        <div class="row">
+            <div class="col-sm-12">
+              <p class="img-title"><%= item.piece_name %></p>
+              <p class="img-desc"><%=year +'.' +month +'.' +date%> &nbsp;|&nbsp; <%= item.member_nick %></p>
+            </div>
+        </div>
+
+        <!-- Image -->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img class="img-detail" src="/upload/<%=item.piece_image%>" alt="">
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Footer Description-->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="desc"><%= item.piece_content %></p>
+            </div>
+        </div>
+
+        <!-- Update / Delete -->
+        <div class="row">
+          <div class="col-sm-12">
+            <a href="/mypage/pieces/delete/<%=item.piece_code%>" id="delete" class="btn btn-primary pull-right">삭제하기</a>
+            <a href="/mypage/pieces/update/<%=item.piece_code%>" id="update" class="btn btn-primary pull-right">수정하기</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include partials/footer.ejs %>
+
+    <!-- base JavaScript -->
+    <%- include partials/basejs.ejs %>
+
+    <script src="/js/mygallery.js"></script>
+
+  </body>
+
+</html>

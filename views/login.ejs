@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/form-elements.css">
+    <link rel="stylesheet" href="/css/form-style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">CrePoli</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/main">Main</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="brand-heading">CrePoli</h1>
+              <p class="intro-text">당신의 숨겨왔던 재능을 뽐내보세요.</p>
+              <p class="intro-text">작품을 올리고 모으며 다른사람과 콜라보 할 수 있습니다.</p>
+              <a href="#login" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Login Section -->
+    <section id="login" class="download-section content-section text-center">
+      <div class="container">
+        <div class="row">
+         <div class="col-lg-8 mx-auto">
+            <h1 class="loginfont">SIGN UP &#38; LOGIN</h1>
+              <div class="description">
+                <p class="loginfont small">네이버, 카카오톡 아이디로 간편하게 가입 및 로그인하세요!</p>
+              </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-top">
+              <div class="form-top-left">
+                <h3>Login</h3>
+                    <p>원하시는 가입 또는 로그인 방식을 눌러주세요:D</p>
+              </div>
+              <div class="form-top-right">
+                <i class="fa fa-lock"></i>
+              </div>
+            </div>
+            <div class="form-bottom">
+              <form role="form" action="" method="post" class="login-form">
+                <a href="/oauth/kakao"><button id="kakao" type="button" class="btn btn-link-1-kakao">kakao로 로그인하기</button></a>
+                <a href="/oauth/naver"><button id="naver" type="button" class="btn btn-link-1-naver">Naver로 로그인하기</button></a>
+			   </form>
+		     </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer-->
+    <%- include partials/footer.ejs %>
+
+    <!-- base JavaScript -->
+    <%- include partials/basejs.ejs %>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.js"></script>
+
+  </body>
+</html>

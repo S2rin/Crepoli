@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/market.css" rel="stylesheet">
+
+  </head>
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <%- include partials/nav.ejs %>
+
+    <!-- Header -->
+    <%- include partials/header.ejs %>
+
+    <!-- Market -->
+    <section id="market">
+      <div class="container">
+
+       <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Market</h2>
+            <h3 class="section-subheading text-muted">작품과 연관된 상품을 볼 수 있습니다.</h3>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Search Box -->
+        <div class="row">
+          <div class="col-sm-12 col-md-5" style="margin:0 auto;margin-bottom:30px;">
+            <div class="input-group">
+              <input name="searchData" type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <a type="button" href="/market/search" id="search_market" class="btn btn-primary" style="font-color:black;" type="button">Go!</a>
+              </span>
+            </div><!-- /input-group -->
+          </div>
+
+          <div class="col-sm-12">
+            <a href="http://localhost:3000/market/upload" class="btn btn-primary btn-sm pull-right" style="margin-bottom:30px;">제품 등록</a>
+          </div>
+        </div>
+
+        <!-- images -->
+        <div class="row">
+          <div id="columns">
+            <%
+              for(var i=0; i<rows.length;i++){
+                var item = rows[i];
+            %>
+            <figure>
+              <a href="/market/goods/<%=item.goods_code%>">
+                <img src="/upload/<%=item.goods_image%>" alt="">
+              </a>
+              <figcaption>
+                <p class="img-title"><%=item.goods_name%></p>
+                <p class="img-desc"><%=item.goods_cost%>￦</p>
+              </figcaption>
+            </figure>
+            <% } %>
+          </div>
+        </div>
+
+      </div><!--.container-->
+    </section>
+
+    <!-- footer-->
+    <%- include partials/footer.ejs %>
+
+    <!-- base JavaScript -->
+    <%- include partials/basejs.ejs %>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/agency.js"></script>
+    <script src="/js/market.js"></script>
+
+  </body>
+</html>
